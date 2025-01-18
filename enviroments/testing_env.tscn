@@ -1,7 +1,20 @@
-[gd_scene format=3 uid="uid://dufsblw3saqer"]
+[gd_scene load_steps=3 format=3 uid="uid://dufsblw3saqer"]
+
+[ext_resource type="Material" uid="uid://0sbk7rq7jmn3" path="res://graphics/materials/new_standard_material_3d.tres" id="1_7dcda"]
+[ext_resource type="PackedScene" uid="uid://blomwar878hxe" path="res://elements/gameplay/player.tscn" id="2_oycr3"]
 
 [node name="testing_env" type="Node3D"]
 
+[node name="dir_light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, -0.866025, -0.5)
+shadow_enabled = true
+
 [node name="floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-size = Vector3(61.8264, 1, 61.1631)
+use_collision = true
+size = Vector3(110.905, 1, 108.551)
+material = ExtResource("1_7dcda")
+
+[node name="Player" parent="." instance=ExtResource("2_oycr3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.612141, 0)
+sensitivity = 1.0
