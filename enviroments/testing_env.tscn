@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dufsblw3saqer"]
+
+[node name="testing_env" type="Node3D"]
+
+[node name="floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+size = Vector3(61.8264, 1, 61.1631)
