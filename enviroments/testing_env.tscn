@@ -1,41 +1,81 @@
-[gd_scene load_steps=6 format=3 uid="uid://dufsblw3saqer"]
+[gd_scene load_steps=9 format=3 uid="uid://dufsblw3saqer"]
 
 [ext_resource type="Material" uid="uid://0sbk7rq7jmn3" path="res://graphics/materials/new_standard_material_3d.tres" id="1_7dcda"]
 [ext_resource type="PackedScene" uid="uid://blomwar878hxe" path="res://elements/gameplay/player.tscn" id="2_oycr3"]
+[ext_resource type="Script" uid="uid://273yfo883llp" path="res://scripts/gameplay/interaction_area.gd" id="3_6of3y"]
 [ext_resource type="Script" uid="uid://cwigiltfl5llw" path="res://scripts/testing_interact.gd" id="4_0i2j0"]
-[ext_resource type="PackedScene" uid="uid://bta08exwgai14" path="res://elements/gameplay/interaction_area.tscn" id="4_6of3y"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6of3y"]
-size = Vector3(3.67969, 2.40808, 3.81421)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6of3y"]
+sky_horizon_color = Color(0.936381, 0.971278, 1.01881, 1)
+ground_bottom_color = Color(0.384314, 0.454902, 0.54902, 1)
+ground_horizon_color = Color(0.936381, 0.971278, 1.01881, 1)
+
+[sub_resource type="Sky" id="Sky_0i2j0"]
+sky_material = SubResource("ProceduralSkyMaterial_6of3y")
+
+[sub_resource type="Environment" id="Environment_ol3u0"]
+background_mode = 2
+sky = SubResource("Sky_0i2j0")
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0i2j0"]
+size = Vector3(3.51172, 2.1759, 3.35571)
 
 [node name="testing_env" type="Node3D"]
+
+[node name="processing" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ol3u0")
 
 [node name="dir_light" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, -0.866025, -0.5)
 shadow_enabled = true
-
-[node name="floor" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-use_collision = true
-size = Vector3(110.905, 1, 108.551)
-material = ExtResource("1_7dcda")
 
 [node name="Player" parent="." instance=ExtResource("2_oycr3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.612141, 0)
 sensitivity = 1.0
 
 [node name="testing_interact" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.39745)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.26031, 0, -17.2801)
 script = ExtResource("4_0i2j0")
 
-[node name="interaction_area" parent="testing_interact" instance=ExtResource("4_6of3y")]
-interaction_message = "This is a custom interaction message"
+[node name="model" type="CSGBox3D" parent="testing_interact"]
+
+[node name="interaction_area" type="Area3D" parent="testing_interact"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_6of3y")
+interaction_message = "This is an interaction message."
+metadata/_custom_type_script = ExtResource("3_6of3y")
 
 [node name="shape" type="CollisionShape3D" parent="testing_interact/interaction_area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.704041, 0)
-shape = SubResource("BoxShape3D_6of3y")
-debug_color = Color(0, 0.6, 0.701961, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.587952, 0)
+shape = SubResource("BoxShape3D_0i2j0")
+debug_color = Color(0.872233, 0.000474569, 0.845644, 1)
 
-[node name="model" type="CSGBox3D" parent="testing_interact"]
+[node name="geometry" type="CSGCombiner3D" parent="."]
+material_override = ExtResource("1_7dcda")
+use_collision = true
+
+[node name="floor" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+use_collision = true
+size = Vector3(110.905, 1, 108.551)
+
+[node name="obstances" type="CSGCombiner3D" parent="geometry"]
+
+[node name="obstance" type="CSGBox3D" parent="geometry/obstances"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.48318, 4.5382, 1.24545)
+use_collision = true
+size = Vector3(3.18066, 11.3225, 2.96875)
+
+[node name="obstance2" type="CSGBox3D" parent="geometry/obstances"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8668, 4.5382, -10.0128)
+use_collision = true
+size = Vector3(3.18066, 11.3225, 25.4854)
+
+[node name="obstance3" type="CSGBox3D" parent="geometry/obstances"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2342, 4.5382, -21.2005)
+use_collision = true
+size = Vector3(27.2571, 11.3225, 3.11011)
 
 [connection signal="on_interact" from="testing_interact/interaction_area" to="testing_interact" method="on_player_interact"]

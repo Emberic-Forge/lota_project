@@ -1,5 +1,8 @@
 extends Node3D
 
-func on_player_interact(caller : Player, interactable : InteractionArea3D) -> void:
+@export var trigger_once : bool = false
+
+func on_player_interact(_caller : Player, interactable : InteractionArea3D) -> void:
 	print('This is an interaction event!')
-	interactable.disable()
+	if trigger_once:
+		interactable.disable()

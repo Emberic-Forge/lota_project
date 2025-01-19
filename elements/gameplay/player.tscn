@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://blomwar878hxe"]
+[gd_scene load_steps=11 format=3 uid="uid://blomwar878hxe"]
 
-[ext_resource type="Script" uid="uid://cknoiaiqng8fd" path="res://scripts/gameplay/player.gd" id="1_wy8kx"]
+[ext_resource type="Script" uid="uid://cknoiaiqng8fd" path="res://scripts/gameplay/player/player.gd" id="1_wy8kx"]
 [ext_resource type="PackedScene" uid="uid://cbebtcyae2yia" path="res://elements/gameplay/hud/hud.tscn" id="2_lwl2y"]
+[ext_resource type="Script" uid="uid://lfjces5gb62q" path="res://scripts/systemic/state machine/state_machine.gd" id="3_xftey"]
+[ext_resource type="Script" uid="uid://8xn1aomj767u" path="res://scripts/gameplay/player/states/idle.gd" id="4_ajrvx"]
+[ext_resource type="Script" uid="uid://dgrhew0d8n4gu" path="res://scripts/systemic/state machine/state.gd" id="5_yv1wk"]
+[ext_resource type="Script" uid="uid://mjphnf8168jm" path="res://scripts/gameplay/player/states/move.gd" id="7_6hrwg"]
+[ext_resource type="Script" uid="uid://bvgpbb8hw0gbg" path="res://scripts/gameplay/player/states/fall.gd" id="8_dwh4p"]
+[ext_resource type="Script" uid="uid://ckx1k1w2q361i" path="res://scripts/gameplay/player/states/jump.gd" id="9_3mrmj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dseu6"]
 
@@ -10,7 +16,6 @@
 [node name="player" type="CharacterBody3D"]
 collision_layer = 3
 script = ExtResource("1_wy8kx")
-jump_height = 2.0
 sensitivity = 10.0
 
 [node name="collider" type="CollisionShape3D" parent="."]
@@ -27,5 +32,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.18755)
 mesh = SubResource("CapsuleMesh_wy8kx")
 
 [node name="hud" parent="." instance=ExtResource("2_lwl2y")]
+
+[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_xftey")
+initial_state = NodePath("idle")
+metadata/_custom_type_script = ExtResource("3_xftey")
+
+[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("player")]
+script = ExtResource("4_ajrvx")
+player = NodePath("../..")
+metadata/_custom_type_script = ExtResource("5_yv1wk")
+
+[node name="move" type="Node" parent="state_machine" node_paths=PackedStringArray("player")]
+script = ExtResource("7_6hrwg")
+player = NodePath("../..")
+metadata/_custom_type_script = ExtResource("5_yv1wk")
+
+[node name="fall" type="Node" parent="state_machine" node_paths=PackedStringArray("player")]
+script = ExtResource("8_dwh4p")
+player = NodePath("../..")
+metadata/_custom_type_script = ExtResource("5_yv1wk")
+
+[node name="jump" type="Node" parent="state_machine" node_paths=PackedStringArray("player")]
+script = ExtResource("9_3mrmj")
+player = NodePath("../..")
+metadata/_custom_type_script = ExtResource("5_yv1wk")
 
 [editable path="hud"]
