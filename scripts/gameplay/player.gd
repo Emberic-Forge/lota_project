@@ -1,25 +1,29 @@
-extends CharacterBody3D
+class_name Player extends CharacterBody3D
 
 @export var speed: float = 5.0
 @export var jump_height: float = 4.5
-@export var sensitivity : float;
+@export_range(1, 100, 0.1) var sensitivity : float;
 
 @onready var cam_anchor = $cam_anchor
+@onready var interaction_popup = $hud/interaction_popup
 
 
-
-
+var current_interactable : InteractionArea3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	# TODO: Move this logic to another node instead.
+	interaction_popup.text = ''
 	pass
 
+func get_percentage_of_sensitivity() -> float:
+	return sensitivity / 100.0;
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		rotate_y(deg_to_rad(-event.relative.x * sensitivity))
-		cam_anchor.rotate_x(deg_to_rad(-event.relative.y * sensitivity))
+		rotate_y(deg_to_rad(-event.relative.x * get_percentage_of_sensitivity()))
+		cam_anchor.rotate_x(deg_to_rad(-event.relative.y * get_percentage_of_sensitivity()))
 		cam_anchor.rotation_degrees.x = clamp(cam_anchor.rotation_degrees.x, -90, 90)
 
 func calculate_jump_velocity() -> float:
@@ -27,7 +31,19 @@ func calculate_jump_velocity() -> float:
 	# where v is the jump velocity, g is the gravity, and h is the jump height
 	return sqrt(2 * abs(get_gravity().y) * jump_height)
 
-func _physics_process(delta) -> void:
+func handle_interactions() -> void:
+	if !current_interactable:
+		return
+	if not Input.is_action_just_pressed("interact"):
+		return
+
+	current_interactable.on_interact.emit(self,current_interactable)
+
+func _process(_delta : float) -> void:
+	# TODO: Move this logic to its own node.
+	handle_interactions()
+
+func _physics_process(delta : float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

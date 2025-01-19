@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dufsblw3saqer"]
+[gd_scene load_steps=6 format=3 uid="uid://dufsblw3saqer"]
 
 [ext_resource type="Material" uid="uid://0sbk7rq7jmn3" path="res://graphics/materials/new_standard_material_3d.tres" id="1_7dcda"]
 [ext_resource type="PackedScene" uid="uid://blomwar878hxe" path="res://elements/gameplay/player.tscn" id="2_oycr3"]
+[ext_resource type="Script" uid="uid://cwigiltfl5llw" path="res://scripts/testing_interact.gd" id="4_0i2j0"]
+[ext_resource type="PackedScene" uid="uid://bta08exwgai14" path="res://elements/gameplay/interaction_area.tscn" id="4_6of3y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6of3y"]
+size = Vector3(3.67969, 2.40808, 3.81421)
 
 [node name="testing_env" type="Node3D"]
 
@@ -18,3 +23,19 @@ material = ExtResource("1_7dcda")
 [node name="Player" parent="." instance=ExtResource("2_oycr3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.612141, 0)
 sensitivity = 1.0
+
+[node name="testing_interact" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.39745)
+script = ExtResource("4_0i2j0")
+
+[node name="interaction_area" parent="testing_interact" instance=ExtResource("4_6of3y")]
+interaction_message = "This is a custom interaction message"
+
+[node name="shape" type="CollisionShape3D" parent="testing_interact/interaction_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.704041, 0)
+shape = SubResource("BoxShape3D_6of3y")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="model" type="CSGBox3D" parent="testing_interact"]
+
+[connection signal="on_interact" from="testing_interact/interaction_area" to="testing_interact" method="on_player_interact"]
