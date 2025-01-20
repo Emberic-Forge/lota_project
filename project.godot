@@ -18,7 +18,10 @@ config/icon="res://icon.svg"
 [file_customization]
 
 folder_colors={
-"res://graphics/textures/": "green"
+"res://elements/gameplay/": "blue",
+"res://graphics/textures/": "green",
+"res://scripts/gameplay/": "blue",
+"res://scripts/systemic/": "yellow"
 }
 
 [input]
