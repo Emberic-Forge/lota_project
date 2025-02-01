@@ -2,8 +2,8 @@
 
 [ext_resource type="Material" uid="uid://0sbk7rq7jmn3" path="res://graphics/materials/new_standard_material_3d.tres" id="1_7dcda"]
 [ext_resource type="PackedScene" uid="uid://blomwar878hxe" path="res://elements/gameplay/player.tscn" id="2_oycr3"]
-[ext_resource type="Script" uid="uid://273yfo883llp" path="res://scripts/gameplay/interaction_area.gd" id="3_6of3y"]
-[ext_resource type="Script" uid="uid://cwigiltfl5llw" path="res://scripts/testing_interact.gd" id="4_0i2j0"]
+[ext_resource type="Script" uid="uid://dj2c34jyv2uxp" path="res://scripts/gameplay/interaction_area.gd" id="3_6of3y"]
+[ext_resource type="Script" uid="uid://bi5ie764g1egl" path="res://scripts/testing_interact.gd" id="4_0i2j0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6of3y"]
 sky_horizon_color = Color(0.936381, 0.971278, 1.01881, 1)
@@ -30,9 +30,9 @@ environment = SubResource("Environment_ol3u0")
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, -0.866025, -0.5)
 shadow_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("2_oycr3")]
+[node name="player" parent="." instance=ExtResource("2_oycr3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.612141, 0)
-sensitivity = 1.0
+collision_mask = 3
 
 [node name="testing_interact" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.26031, 0, -17.2801)
@@ -41,8 +41,9 @@ script = ExtResource("4_0i2j0")
 [node name="model" type="CSGBox3D" parent="testing_interact"]
 
 [node name="interaction_area" type="Area3D" parent="testing_interact"]
-collision_layer = 0
-collision_mask = 2
+collision_layer = 15
+collision_mask = 15
+monitorable = false
 script = ExtResource("3_6of3y")
 interaction_message = "This is an interaction message."
 metadata/_custom_type_script = ExtResource("3_6of3y")

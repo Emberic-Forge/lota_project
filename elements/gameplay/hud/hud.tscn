@@ -1,6 +1,12 @@
-[gd_scene format=3 uid="uid://cbebtcyae2yia"]
+[gd_scene load_steps=5 format=3 uid="uid://cbebtcyae2yia"]
+
+[ext_resource type="Script" uid="uid://bywlucjc110pk" path="res://scripts/gameplay/hud/hud.gd" id="1_et6gw"]
+[ext_resource type="Texture2D" uid="uid://bq36isbaert4r" path="res://graphics/textures/ui/hud/Health Bar - Under.png" id="1_v7k1c"]
+[ext_resource type="Texture2D" uid="uid://cc3qh3bm8qe50" path="res://graphics/textures/ui/hud/Health Bar - Over.png" id="2_et6gw"]
+[ext_resource type="Texture2D" uid="uid://cpfibyhthd10m" path="res://graphics/textures/ui/hud/Health Bar - Progress.png" id="3_8rrab"]
 
 [node name="hud" type="CanvasLayer"]
+script = ExtResource("1_et6gw")
 
 [node name="interaction_popup" type="RichTextLabel" parent="."]
 anchors_preset = 8
@@ -22,3 +28,23 @@ autowrap_mode = 0
 shortcut_keys_enabled = false
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="health_bar" type="TextureProgressBar" parent="."]
+offset_left = 22.0
+offset_top = 156.0
+offset_right = 87.0
+offset_bottom = 221.0
+rotation = -1.572
+scale = Vector2(2, 2)
+max_value = 1.0
+step = 0.01
+value = 0.73
+stretch_margin_left = 65
+stretch_margin_top = 65
+texture_under = ExtResource("1_v7k1c")
+texture_over = ExtResource("2_et6gw")
+texture_progress = ExtResource("3_8rrab")
+tint_under = Color(0.37035, 0.00443261, 0, 1)
+tint_over = Color(1, 0, 0, 1)
+tint_progress = Color(0.760203, 3.70607e-06, 4.81307e-07, 1)
+metadata/_edit_use_anchors_ = true
