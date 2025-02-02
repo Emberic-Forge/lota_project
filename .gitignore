@@ -6,6 +6,7 @@
 *.uid
 
 # Godot-specific ignores
+*.import
 .import/
 export.cfg
 export_presets.cfg
