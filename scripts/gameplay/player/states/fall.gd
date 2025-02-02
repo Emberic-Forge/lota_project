@@ -1,6 +1,11 @@
 extends PlayerState
 
-func on_enter(msg) -> void:
+@export_category("Movement")
+@export var air_speed: float = 10.0
+@export var air_acceleration: float = 10.0
+@export var air_deceleration: float = 10.0
+
+func on_enter(_msg) -> void:
 	pass
 
 func on_exit() -> void:
@@ -13,4 +18,4 @@ func on_update(_delta: float) -> void:
 
 func on_physical_update(delta: float) -> void:
 	player.velocity += player.get_gravity() * delta
-	player.move_and_slide()
+	move_player(air_speed, air_acceleration, air_deceleration)

@@ -11,7 +11,7 @@ var currentMode
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	camera_controller.player = self
+	camera_controller.initialize(self)
 	state_machine.initialize()
 
 	# TODO: Move this logic to another node instead.

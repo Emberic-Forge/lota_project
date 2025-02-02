@@ -32,7 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.18755)
 [node name="model" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_wy8kx")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="model"]
+[node name="front" type="CSGBox3D" parent="model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.382527, -0.257444)
 size = Vector3(0.682617, 0.137695, 0.805542)
 
@@ -55,13 +55,23 @@ metadata/_custom_type_script = ExtResource("5_yv1wk")
 
 [node name="fall" type="Node" parent="state_machine" node_paths=PackedStringArray("player")]
 script = ExtResource("8_dwh4p")
+air_acceleration = 0.5
+air_deceleration = 0.5
 player = NodePath("../..")
 metadata/_custom_type_script = ExtResource("5_yv1wk")
 
 [node name="jump" type="Node" parent="state_machine" node_paths=PackedStringArray("player")]
 script = ExtResource("9_3mrmj")
+air_acceleration = 0.5
+air_deceleration = 0.5
 player = NodePath("../..")
 metadata/_custom_type_script = ExtResource("5_yv1wk")
+
+[node name="sprint" type="Node" parent="state_machine" node_paths=PackedStringArray("player")]
+script = ExtResource("7_6hrwg")
+speed = 25.0
+player = NodePath("../..")
+metadata/_custom_type_script = ExtResource("7_6hrwg")
 
 [node name="health_manager" type="Node" parent="." node_paths=PackedStringArray("hud")]
 script = ExtResource("9_6hrwg")
@@ -69,5 +79,6 @@ hud = NodePath("../hud")
 
 [node name="camera_controller" type="Node" parent="."]
 script = ExtResource("10_dwh4p")
+sensitivity = 10.0
 
 [editable path="hud"]
