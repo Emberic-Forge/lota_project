@@ -1,10 +1,10 @@
 extends PlayerState
 
 
-func on_enter(msg) -> void:
+func on_enter(_msg) -> void:
 	pass
 
-func on_exit() -> void:
+func on_exit(_msg) -> void:
 	pass
 
 func on_update(_delta: float) -> void:
@@ -15,6 +15,8 @@ func on_update(_delta: float) -> void:
 		transition_to_state.emit(self, "move", {})
 	elif is_jumping():
 		transition_to_state.emit(self, "jump", {})
+	elif Input.is_action_pressed("move_crouch"):
+		transition_to_state.emit(self, "crouch", {})
 
 func on_physical_update(_delta: float) -> void:
 	pass

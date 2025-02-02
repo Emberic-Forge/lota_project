@@ -8,12 +8,15 @@ extends PlayerState
 func on_enter(_msg) -> void:
 	pass
 
-func on_exit() -> void:
+func on_exit(_msg) -> void:
 	pass
 
 func on_update(_delta: float) -> void:
 	if player.is_on_floor():
-		var next_state = "move" if get_directional_input().length() > 0 else "idle"
+		var idle_state = "crouch" if Input.is_action_pressed("move_crouch") else "idle"
+		var move_state = "crouch_move" if Input.is_action_pressed("move_crouch") else "move"
+
+		var next_state = move_state if get_directional_input().length() > 0 else idle_state
 		transition_to_state.emit(self, next_state, {})
 
 func on_physical_update(delta: float) -> void:

@@ -15,7 +15,7 @@ func on_enter(_msg) -> void:
 	player.velocity.y = calculate_jump_velocity()
 	pass
 
-func on_exit() -> void:
+func on_exit(_msg) -> void:
 	pass
 
 

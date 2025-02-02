@@ -1,6 +1,4 @@
-class_name State extends Node
-
-signal transition_to_state(caller : State, state: String, msg: Dictionary)
+extends PlayerState
 
 func on_enter(_msg):
 	pass
