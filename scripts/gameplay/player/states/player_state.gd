@@ -12,13 +12,14 @@ func is_jumping() -> bool:
 func is_fallling() -> bool:
 	return not player.is_on_floor() and player.velocity.y < 0
 
-
+# PLACEHOLDER
 func set_player_collider(new_collider: Shape3D) -> void:
 	var collider: CollisionShape3D = player.get_node("collider")
 	var old_shape = collider.shape
 	collider.shape = new_collider
 	player.position.y -= (old_shape.height - new_collider.height) / 2.0
 
+# PLACEHOLDER
 func set_player_mesh(new_mesh: Mesh) -> void:
 	var mesh_instance: MeshInstance3D = player.get_node("model")
 	mesh_instance.mesh = new_mesh
