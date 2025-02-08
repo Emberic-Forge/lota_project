@@ -17,8 +17,9 @@ func _process(_delta: float) -> void:
 func update_health_bar() -> void:
 	hud.update_health(current_health / max_health)
 
-func take_damage(damage: int) -> void:
-	current_health -= damage
+func alter_health(value: int) -> void:
+	current_health -= value
+	clamp(current_health, 0, max_health)
 	if current_health <= 0:
 		die()
 
