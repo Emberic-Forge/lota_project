@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cbebtcyae2yia"]
+[gd_scene load_steps=10 format=3 uid="uid://cbebtcyae2yia"]
 
 [ext_resource type="Script" uid="uid://bywlucjc110pk" path="res://scripts/gameplay/hud/hud.gd" id="1_et6gw"]
 [ext_resource type="Texture2D" uid="uid://lyma0hrsvmfl" path="res://graphics/textures/ui/hud/health_bar_background.svg" id="2_h2kp2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c45rqxlji6mfb" path="res://graphics/textures/ui/hud/stamina_bar_border.svg" id="6_rep5b"]
 [ext_resource type="Texture2D" uid="uid://dyc77fltf4rva" path="res://graphics/textures/ui/hud/stamina_bar_fill.svg" id="7_vqave"]
 [ext_resource type="Texture2D" uid="uid://8suwki37kwrc" path="res://graphics/textures/ui/hud/weapon_indicator.svg" id="8_a8mnv"]
+[ext_resource type="Texture2D" uid="uid://cplucck5ko1go" path="res://graphics/textures/ui/hud/inventory_slot.svg" id="9_ysmjg"]
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource("1_et6gw")
@@ -35,9 +36,9 @@ vertical_alignment = 1
 
 [node name="health_bar" type="TextureProgressBar" parent="."]
 offset_left = 22.0
-offset_top = 156.0
+offset_top = 157.0
 offset_right = 87.0
-offset_bottom = 221.0
+offset_bottom = 222.0
 rotation = -1.572
 scale = Vector2(2, 2)
 max_value = 1.0
@@ -50,16 +51,184 @@ texture_progress = ExtResource("4_7jjrk")
 
 [node name="staminar_bar" type="TextureProgressBar" parent="."]
 offset_left = 138.0
-offset_top = 72.0
+offset_top = 73.0
 offset_right = 391.0
-offset_bottom = 92.0
+offset_bottom = 93.0
 texture_under = ExtResource("5_cgu66")
 texture_over = ExtResource("6_rep5b")
 texture_progress = ExtResource("7_vqave")
 
 [node name="weapon_indicator" type="TextureRect" parent="."]
 offset_left = 95.0
-offset_top = 93.0
+offset_top = 94.0
 offset_right = 363.0
-offset_bottom = 155.0
+offset_bottom = 156.0
 texture = ExtResource("8_a8mnv")
+
+[node name="inventory" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1563.0
+offset_top = 274.0
+offset_right = 1899.0
+offset_bottom = 679.0
+
+[node name="background" type="PanelContainer" parent="inventory"]
+layout_mode = 0
+offset_right = 336.0
+offset_bottom = 404.0
+
+[node name="grid" type="GridContainer" parent="inventory/background"]
+layout_mode = 2
+columns = 5
+
+[node name="slot" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_ysmjg")
+
+[node name="slot2" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot3" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot4" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot5" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot6" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot7" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot8" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot9" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot10" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot11" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot12" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot13" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot14" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot15" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot16" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot17" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot18" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot19" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot20" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot21" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot22" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot23" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot24" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot25" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot26" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot27" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot28" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot29" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4
+
+[node name="slot30" type="TextureRect" parent="inventory/background/grid"]
+layout_mode = 2
+texture = ExtResource("9_ysmjg")
+stretch_mode = 4

@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcxorqklinm7y"]
+
+[ext_resource type="Script" uid="uid://brdfoo28itxmj" path="res://scripts/gameplay/hud/inventory.gd" id="1_l22x4"]
+
+[node name="inventory" type="PanelContainer"]
+offset_right = 84.0
+offset_bottom = 20.0
+script = ExtResource("1_l22x4")
+
+[node name="margins" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="slot_grid" type="GridContainer" parent="margins"]
+layout_mode = 2
+columns = 10

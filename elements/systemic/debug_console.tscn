@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://djjra23rs0kvu"]
+
+[ext_resource type="Script" uid="uid://cmooo6dseki0y" path="res://scripts/systemic/debug console/terminal.gd" id="1_f4dso"]
+[ext_resource type="Script" uid="uid://das66lss86dpb" path="res://scripts/systemic/debug console/command_manager.gd" id="1_qmhrr"]
+
+[node name="debug_console" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_qmhrr")
+
+[node name="background" type="PanelContainer" parent="."]
+offset_left = 1160.0
+offset_top = -7.0
+offset_right = 1741.0
+offset_bottom = 406.0
+script = ExtResource("1_f4dso")
+
+[node name="layout" type="VBoxContainer" parent="background"]
+layout_mode = 2
+alignment = 2
+
+[node name="output" type="RichTextLabel" parent="background/layout"]
+layout_mode = 2
+fit_content = true
+scroll_following = true
+
+[node name="input" type="TextEdit" parent="background/layout"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+placeholder_text = "Enter command"
+caret_type = 1
+caret_blink = true
+caret_multiple = false

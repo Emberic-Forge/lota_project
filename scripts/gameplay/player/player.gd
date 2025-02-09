@@ -16,6 +16,9 @@ func _ready():
 
 	# TODO: Move this logic to another node instead.
 	interaction_popup.text = ''
+
+
+	DebugConsole.register_command('heal', _heal)
 	pass
 
 func handle_interactions() -> void:
@@ -28,3 +31,7 @@ func handle_interactions() -> void:
 func _process(_delta: float) -> void:
 	# TODO: Move this logic to its own node.
 	handle_interactions()
+
+func _heal(_args) -> String:
+	health_manager.alter_health(-int(_args[0]))
+	return 'Healed ' + _args[0] + ' health points.'

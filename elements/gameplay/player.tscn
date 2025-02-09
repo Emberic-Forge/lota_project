@@ -42,6 +42,24 @@ size = Vector3(0.682617, 0.137695, 0.805542)
 
 [node name="hud" parent="." instance=ExtResource("2_lwl2y")]
 
+[node name="health_bar" parent="hud/gameplay" index="0"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 65.0
+offset_bottom = 65.0
+
+[node name="staminar_bar" parent="hud/gameplay" index="1"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 253.0
+offset_bottom = 20.0
+
+[node name="weapon_indicator" parent="hud/gameplay" index="2"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 268.0
+offset_bottom = 62.0
+
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_xftey")
 initial_state = NodePath("idle")
