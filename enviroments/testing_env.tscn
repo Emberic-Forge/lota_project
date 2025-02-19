@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://0sbk7rq7jmn3" path="res://graphics/materials/new_standard_material_3d.tres" id="1_7dcda"]
 [ext_resource type="PackedScene" uid="uid://blomwar878hxe" path="res://elements/gameplay/player.tscn" id="2_oycr3"]
-[ext_resource type="Script" uid="uid://273yfo883llp" path="res://scripts/gameplay/interaction_area.gd" id="3_6of3y"]
+[ext_resource type="Script" uid="uid://d81hqx3pvkg2" path="res://scripts/gameplay/interactive/interaction_area.gd" id="3_6of3y"]
 [ext_resource type="Script" uid="uid://cwigiltfl5llw" path="res://scripts/testing_interact.gd" id="4_0i2j0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6of3y"]

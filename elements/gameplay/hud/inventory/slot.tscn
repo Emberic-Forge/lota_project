@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://mcp0kgtr2up"]
+
+[ext_resource type="Theme" uid="uid://b5f2v4lio4mdd" path="res://graphics/core_theme.tres" id="1_whtap"]
+
+[node name="slot" type="MarginContainer"]
+offset_right = 48.0
+offset_bottom = 48.0
+theme = ExtResource("1_whtap")
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="inner_slot" type="Panel" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_filter = 2

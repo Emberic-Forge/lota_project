@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://b5f2v4lio4mdd"]
 
-[ext_resource type="Texture2D" uid="uid://cplucck5ko1go" path="res://graphics/textures/ui/hud/inventory_slot.svg" id="1_gpjbc"]
+[ext_resource type="Texture2D" uid="uid://bnrny6gbaew3b" path="res://graphics/textures/ui/hud/inventory_slot.svg" id="1_gpjbc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lljg1"]
 texture = ExtResource("1_gpjbc")
@@ -10,4 +10,8 @@ texture_margin_right = 10.0
 texture_margin_bottom = 10.0
 
 [resource]
+MarginContainer/constants/margin_bottom = 4
+MarginContainer/constants/margin_left = 4
+MarginContainer/constants/margin_right = 4
+MarginContainer/constants/margin_top = 4
 Panel/styles/panel = SubResource("StyleBoxTexture_lljg1")
