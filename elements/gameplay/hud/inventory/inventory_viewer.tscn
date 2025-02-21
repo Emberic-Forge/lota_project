@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://kqfe8do2lsoa"]
 
 [ext_resource type="Theme" uid="uid://b5f2v4lio4mdd" path="res://graphics/core_theme.tres" id="1_ccyq8"]
-[ext_resource type="Script" uid="uid://dohxmbmainje7" path="res://scripts/gameplay/hud/inventory/inventory_viewer.gd" id="2_q7uaa"]
+[ext_resource type="Script" uid="uid://cj8sixbamb0bl" path="res://scripts/gameplay/hud/inventory/inventory_viewer.gd" id="2_q7uaa"]
 
 [node name="inventory_viewer" type="Control"]
 layout_mode = 3
@@ -21,10 +21,7 @@ offset_bottom = 8.0
 [node name="padding" type="MarginContainer" parent="background"]
 layout_mode = 2
 theme = ExtResource("1_ccyq8")
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
+theme_type_variation = &"Inventory"
 
 [node name="grid" type="GridContainer" parent="background/padding"]
 layout_mode = 2

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://djjra23rs0kvu"]
 
-[ext_resource type="Script" uid="uid://c06c6gccybihm" path="res://scripts/systemic/debug console/terminal.gd" id="1_f4dso"]
-[ext_resource type="Script" uid="uid://j6j6ms35l7k5" path="res://scripts/systemic/debug console/command_manager.gd" id="1_qmhrr"]
+[ext_resource type="Script" uid="uid://cmooo6dseki0y" path="res://scripts/systemic/debug console/terminal.gd" id="1_f4dso"]
+[ext_resource type="Script" uid="uid://das66lss86dpb" path="res://scripts/systemic/debug console/command_manager.gd" id="1_qmhrr"]
 
 [node name="debug_console" type="CanvasLayer"]
 layer = 2
